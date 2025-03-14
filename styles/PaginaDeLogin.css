@@ -100,7 +100,7 @@
 /* Estilos das opções / fieldset */
 .form__opcoes {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
     font-size: 15px;
     margin-top: .5em;

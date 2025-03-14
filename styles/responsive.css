@@ -16,5 +16,19 @@
         padding-top: 350px;
     }
 
+    .form__checkbox-texto {
+       display: flex;
+       
+    }
+    
+    .form__opcoes {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        padding-top: 15px;
+
+    }
+ 
 
 }
