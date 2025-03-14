@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./styles/styles.css" />
+    <link rel="stylesheet" href="./styles/responsive.css">
     <link rel="stylesheet" href="./styles/PaginaDeLogin.css" />
     <link rel="stylesheet" href="./styles/CampoDeDigitacao.css" />
     <title>Login | CodeConnect</title>
@@ -111,7 +112,7 @@
 
             return (
             <div className='container-login'>
-            <img src="./img/imagem-login.png" alt="mulher negra usando oculos, mexendo no computador e no canto inferior aparece o logo do CodeConnect"/>
+            <img className='imagem-login' src="./img/imagem-login.png" alt="mulher negra usando oculos, mexendo no computador e no canto inferior aparece o logo do CodeConnect"/>
             <section>
                 <form onSubmit = {handleSubmit}>
                     <Titulo>Login</Titulo>

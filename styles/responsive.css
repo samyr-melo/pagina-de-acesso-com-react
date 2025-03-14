@@ -1,0 +1,20 @@
+@media (max-width:1000px) {
+    
+    .container-login{
+        
+        display: flex;
+        flex-direction: column;
+        background-color: var(--cinza-escuro);
+        padding: 3.5em 5em;
+        border-radius: 32px;
+        gap: 3em;
+        
+    }
+
+    .imagem-login {
+        width: 100% ;
+        padding-top: 350px;
+    }
+
+
+}
