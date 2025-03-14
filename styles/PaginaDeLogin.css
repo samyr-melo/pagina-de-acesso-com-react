@@ -140,7 +140,7 @@
     position: absolute;
     display: inline-block;
     top: 0.7em;
-    left: 1em;
+    left: 0em;
     content: " ";
     width: 2em;
     height: 0.05em;
@@ -149,7 +149,7 @@
 
 .container-links__titulo::after {
     left: initial;
-    right: 1em;
+    right: 0em;
 }
 
 .container-links ul {
