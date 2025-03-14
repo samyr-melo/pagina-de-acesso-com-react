@@ -28,40 +28,124 @@
          
 
     <script type="text/babel">
-        function Titulo() {
+        function Titulo({children}) {
             return (
-                <h1 className='form__titulo'>Login</h1>
+                <h1 className='form__titulo'>{children}</h1>
             )
         }
-        function Subtitulo(){
+        function Subtitulo({children}){
             return(
-                <h2 className='form__texto'>Bem vindo! Faça seu login!</h2>
+                <h2 className='form__texto'>{children}</h2>
             )
         }
+
+        function CampoDeDigitacao({label, tipo, placeholder, value, setValor}){
+            return(
+                <div className = "form__campo-digitacao">
+                        <label for={tipo}>{label}</label>
+                        <input type={tipo}
+                            placeholder={placeholder}
+                            required
+                            id={tipo}
+                            value={value}
+                            onChange = {(evento) => setValor(evento.target.value)}/>
+                </div>
+            )
+        }
+
+        function Botao({children}) {
+            return (
+                <button className='form__botao' type='submit'>{children}</button>
+            )
+        }
+
+        //criando checkbox para adicionar
+        function Checkbox () {
+            return (
+                // fragments - sem caráter semântico
+                <> 
+                    <div className = 'form__campo-checkbox'>
+                        <input type='checkbox' id='lembrar'/>
+                        <label for="lembrar"/>
+                    </div>
+                    <p className ='form__opcoes-texto'>Lembrar-me</p>
+                </> 
+            )
+            
+        }
+
+        function Texto ({classe, children}) {
+            return (
+                <p className = {classe}>{children}</p>
+            )
+        }
+
+        function ItemRedesSociais({link, nome}) {
+            return (
+                <li>
+                    <a href="{link}">
+                        <img src = {`./img/${nome}.svg`} alt = {`icone do ${nome}`}/>
+                        {nome}
+                    </a>
+                </li>
+            )
+        }
+
+        function Link ({children}) {
+            return (
+                <a href ='#' className ='container-links__link'>
+                    {children}
+                </a>
+            )
+        }
+
         function PaginaDeLogin() {
+            const [email, setEmail] = React.useState('');
+            const [password, setPassword] = React.useState('');
+
+            const handleSubmit = (event) => {
+                event.preventDefault();
+                console.log('email ' + email);
+                console.log('senha ' + password);
+            }
+
             return (
             <div className='container-login'>
             <img src="./img/imagem-login.png" alt="mulher negra usando oculos, mexendo no computador e no canto inferior aparece o logo do CodeConnect"/>
             <section>
-                <form>
-                    <Titulo/>
-                    <Subtitulo/>
-                    <div className = "form__campo-digitacao">
-                        <label for="email">Email ou usuário</label>
-                        <input type="email"
-                            placeholder = 'Digite seu e-mail ou usuário'
-                            required
-                            id='email'/>
-                    </div>
+                <form onSubmit = {handleSubmit}>
+                    <Titulo>Login</Titulo>
+                    <Subtitulo>Boas-vindas! Faça seu login!</Subtitulo>
+                    <CampoDeDigitacao 
+                        label='E-mail ou usuário'
+                        tipo='email'
+                        placeholder='Digite o seu e-mail ou usuário'
+                        value={email}
+                        setValor = {setEmail}/>
+                    <CampoDeDigitacao 
+                        label='Digite sua senha'
+                        tipo='password'
+                        placeholder='Digite sua senha'
+                        value={password}
+                        setValor={setPassword}/>
 
-                    <div className='form__campo-digitacao'>
-                        <label for="senha">Senha</label>
-                        <input type="password"
-                            placeholder='Digite sua senha'
-                            required
-                            id='senha' />
-                    </div>
-                </form>    
+                    <fieldset className = 'form__opcoes'>
+                        <Checkbox/>
+                        <p>
+                            <a href="#" aria-label='Recuperar senha esquecida'>Esqueci a senha</a>
+                        </p>
+                    </fieldset>
+                    <Botao>Login</Botao>
+                </form> 
+                <div className='container-links'>
+                    <Texto classe = 'container-links__titulo'>ou entre com outra conta</Texto>
+                    <ul>
+                        <ItemRedesSociais link = 'https://www.github.com' nome= 'Github' />
+                        <ItemRedesSociais link = 'https://www.google.com' nome= 'Google' />
+                    </ul>
+                    <Texto classe = 'container-links__texto'>Ainda não tem conta?</Texto>
+                    <Link classe ='container-links__link'>Crie seu cadastro</Link>
+                </div>   
             </section>
             </div>
             )
